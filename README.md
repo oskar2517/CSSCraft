@@ -11,3 +11,10 @@ A game conceptually similar to Minecraft using exclusively CSS 3D transforms for
 
 ## Try it out
 Visit https://oskar2517.github.io/CSSCraft to run the game.
+
+### Controls
+- Rotate: W, A, S, D
+- Move up/down: Q, E
+- Change block: Mouse wheel scroll
+- Place block: Right click
+- Destroy block: Left click
