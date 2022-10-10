@@ -8,3 +8,6 @@ A game conceptually similar to Minecraft using exclusively CSS 3D transforms for
 - Sand physics
 - Exploding TNT
 - Slime mobs that jump around the map
+
+## Try it out
+Visit https://oskar2517.github.io/CSSCraft to run the game.
