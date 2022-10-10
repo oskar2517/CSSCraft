@@ -1,0 +1,347 @@
+body {
+    margin: 0;
+    user-select: none;
+    overflow: hidden;
+    background-color: #D8EBFF;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    perspective: 5000px;
+}
+
+.debug {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: lightgray;
+    z-index: 1;
+}
+
+.debug span, 
+.debug input[type=range],
+.debug input[type=button] {
+    display: block;
+}
+
+.debug .selectedBlockPreview {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+}
+
+.game {
+    transform-style: preserve-3d;
+    margin: 0 auto;
+    margin-top: 50vh; 
+    transform: rotateY(20deg) rotateX(-5deg);
+    position: fixed;
+    left:  0;
+    right: 0;
+}
+
+.game .block {
+    margin-left: 0;
+    transform-style: preserve-3d;
+    position: absolute;
+}
+
+.game .block div {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+    background-position: center center; 
+}
+
+.game .block .top {
+    transform: rotateX(90deg);
+    margin-top: -50px;
+}
+ 
+.game .block .right {
+    transform: rotateY(90deg); 
+    margin-left: 50px;
+}
+ 
+.game .block .bottom {
+    transform: rotateX(90deg);
+    margin-top: 50px;
+}
+ 
+.game .block .left {
+    transform: rotateY(-90deg);
+    margin-left: -50px;
+}
+ 
+.game .block .front {
+    transform: translateZ(50px); 
+}
+ 
+.game .block .back {
+    transform: translateZ(-50px); 
+}
+
+.game .block div:hover {
+    filter: brightness(120%) !important;
+}
+
+.game .slime {
+    margin-left: 0;
+    transform-style: preserve-3d;
+    position: absolute;
+    will-change: left, transform, top;
+    transition: left 2s, transform 2s, ease-in top .5s;
+    animation: slimeJump 1s infinite;
+}
+
+.game .slime div {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+    background-position: center center; 
+    top: -50px;
+    left: 25px;
+}
+
+.game .slime .shadow {
+    transform: rotateX(90deg);
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin-top: 25px; 
+    animation: slimeShadow 1s infinite;  
+}
+
+.game .slime .top {
+    transform: rotateX(90deg);
+    margin-top: -25px;
+    background-image: url("../img/slime/top.png");
+}
+ 
+.game .slime .right {
+    transform: rotateY(90deg); 
+    margin-left: 25px;
+    background-image: url("../img/slime/right.png");
+}
+ 
+.game .slime .bottom {
+    transform: rotateX(90deg);
+    margin-top: 25px;
+    background-image: url("../img/slime/bottom.png");
+}
+ 
+.game .slime .left {
+    transform: rotateY(-90deg);
+    margin-left: -25px;
+    background-image: url("../img/slime/left.png");
+}
+ 
+.game .slime .front {
+    transform: translateZ(25px); 
+    background-image: url("../img/slime/front.png");
+}
+ 
+.game .slime .back {
+    transform: translateZ(-25px); 
+    background-image: url("../img/slime/back.png");
+}
+
+.game .slime .inner {
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 10px;
+    margin-left: -15px;
+}
+
+.game .slime .inner div {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-image: url("../img/slime/inner.png");
+}
+
+.game .slime .inner .top {
+    transform: rotateX(90deg);
+    margin-top: -15px;
+}
+ 
+.game .slime .inner .right {
+    transform: rotateY(90deg); 
+    margin-left: 15px;
+}
+ 
+.game .slime .inner .bottom {
+    transform: rotateX(90deg);
+    margin-top: 15px;
+}
+ 
+.game .slime .inner .left {
+    transform: rotateY(-90deg);
+    margin-left: -15px;
+}
+ 
+.game .slime .inner .front {
+    transform: translateZ(15px); 
+}
+ 
+.game .slime .inner .back {
+    transform: translateZ(-15px); 
+}
+
+.game .block.fallingBlock {
+    will-change: top;
+    transition: ease-in top .5s;
+}
+
+.game .block div.tntBlink {
+    animation: tntBlink 2s; 
+}   
+
+.game .block div.tntBlink.top.expand {
+    animation: tntTop .5s;
+}
+
+.game .block div.tntBlink.bottom.expand {
+    animation: tntBottom .5s;
+}
+
+.game .block div.tntBlink.left.expand {
+    animation: tntLeft .5s;
+}
+
+.game .block div.tntBlink.right.expand {
+    animation: tntRight .5s;
+}
+
+.game .block div.tntBlink.front.expand {
+    animation: tntFront .5s;
+}
+
+.game .block div.tntBlink.back.expand {
+    animation: tntBack .5s;
+}
+
+@keyframes tntBlink {
+    0% {
+        filter: brightness(150%);
+    }
+
+    20% {
+        filter: brightness(100%);
+    }
+
+    40% {
+        filter: brightness(150%);
+    }
+
+    60% {
+        filter: brightness(100%);
+    }
+
+    80% {
+        filter: brightness(150%);
+    }
+
+    100% {
+        filter: brightness(100%);
+    }
+}
+
+@keyframes tntTop {
+    to {
+        margin-top: -80px;
+        width: 120px;
+        height: 120px;
+        margin-left: -10px;
+    }
+}
+
+@keyframes tntBottom { 
+    to {
+        margin-top: 40px;
+        width: 120px;
+        height: 120px;
+        margin-left: -10px;
+    }
+}
+
+@keyframes tntLeft {
+    to {
+        margin-left: -70px;
+        width: 120px;
+        height: 120px;
+        margin-top: -20px;
+    }
+}
+
+@keyframes tntRight {
+    to {
+        margin-left: 50px;
+        width: 120px;
+        height: 120px;
+        margin-top: -20px;
+    }
+}
+
+@keyframes tntFront {
+    to {
+        transform: translateZ(60px); 
+        margin-left: -10px;
+        width: 120px;
+        height: 120px;
+        margin-top: -20px;
+    }
+}
+
+@keyframes tntBack {
+    to {
+        transform: translateZ(-60px); 
+        margin-left: -10px;
+        width: 120px;
+        height: 120px;
+        margin-top: -20px;
+    }
+}
+
+@keyframes slimeJump {
+    0% {
+        margin-top: 0px;
+    } 
+
+    50% {
+        margin-top: -100px;
+    }
+
+    100% {
+        margin-top: 0px;
+    }
+}
+
+@keyframes slimeShadow {
+    0% {
+        margin-top: 25px;
+        width: 50px;
+        height: 50px;
+    } 
+
+    50% {
+        margin-top: 132px;
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+    }
+
+    100% {
+        margin-top: 25px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+

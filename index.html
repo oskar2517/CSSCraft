@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSSCraft</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="debug">
+        <span>CSSCraft 1.5</span>
+        <span id="fpsContainer"></span>
+        <span id="blocksCount"></span>
+        <span id="selectedBlock"></span><img id="selectedBlockPreview" class="selectedBlockPreview">
+        <span>Rotating: w, a, s, d</span>
+        <span>Up/Down: e, q</span>
+        <span>Block: Mouse Wheel</span>
+        <br>
+
+        <span id="worldSizeSpan">World Size (5)</span>
+        <input type="range" id="worldSize"  min="1" max="15" value="5">
+
+        <label for="spawnTree">Spawn Trees</label>
+        <input type="checkbox" id="spawnTrees" checked="true">
+        <br>
+        <label for="sandPhysics">Sand Phyics</label>
+        <input type="checkbox" id="sandPhysics" checked="true"> 
+        <br>
+        <label for="explodingTNT">Exploding TNT</label>
+        <input type="checkbox" id="explodingTNT" checked="true">    
+        <br>
+        <label for="movingMobs">Moving Mobs</label>
+        <input type="checkbox" id="movingMobs" checked="true">   
+
+        <input type="button" value="Regenerate" id="regenerateWorld">
+    </div>
+
+    <div class="game" id="game"></div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
